@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WH个人主页</title>
+  <title>我的个人主页</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* 额外的样式调整 */
@@ -14,7 +14,27 @@
     .bg-gradient {
       background: linear-gradient(45deg, #6a11cb, #2575fc);
     }
+    .project-image {
+      display: none;
+      margin-top: 10px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .project-image.active {
+      display: block;
+    }
   </style>
+  <script>
+    function showImage(project) {
+      const images = document.querySelectorAll('.project-image');
+      images.forEach(image => image.classList.remove('active')); // 隐藏所有图片
+      const image = document.getElementById(project + '-image');
+      if (image) {
+        image.classList.add('active'); // 显示点击的项目图片
+      }
+    }
+  </script>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
@@ -23,7 +43,7 @@
     <div class="max-w-4xl mx-auto">
       <img src="avatar.jpg" alt="我的头像" class="w-32 h-32 rounded-full mx-auto shadow-xl">
       <h1 class="text-4xl font-bold mt-4">WH</h1>
-      <p class="text-xl">AI开发工程师 | 热爱技术与分享</p>
+      <p class="text-xl">AI 开发工程师 | 热爱技术与分享</p>
       <div class="mt-4 space-x-6">
         <a href="mailto:me@example.com" class="text-white hover:text-gray-300">Email</a>
         <a href="https://github.com/username" class="text-white hover:text-gray-300">GitHub</a>
@@ -42,7 +62,7 @@
       </div>
       <div class="card bg-white p-6">
         <h3 class="text-xl font-semibold mb-2">运动</h3>
-        <p class="text-gray-600">我喜欢跑步和健身，保持健康的身体是我的目标。</p>
+        <p class="text-gray-600">我喜欢跑步和羽毛球，保持健康的身体是我的目标。</p>
       </div>
       <div class="card bg-white p-6">
         <h3 class="text-xl font-semibold mb-2">旅行</h3>
@@ -52,18 +72,20 @@
   </section>
 
   <!-- 项目展示 -->
-  <section class="max-w-4xl mx-auto mt-10 px-6">
+  <section class="max-w-4xl mx-auto mt-10 px-6 bg-gray-200 p-6 rounded-lg">
     <h2 class="text-2xl font-bold mb-6 border-b pb-2 text-center">项目展示</h2>
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="card bg-white p-6">
+      <div class="card bg-white p-6 cursor-pointer" onclick="showImage('project1')">
         <h3 class="text-xl font-semibold">项目一</h3>
-        <p class="text-gray-600 mt-2">多智能体电商客服助手</p>
+        <p class="text-gray-600 mt-2">多智能体协作的电商客服助手。</p>
         <a href="#" class="text-blue-500 mt-3 inline-block">查看项目 →</a>
+        <img src="imgs/project1.jpg" id="project1-image" class="project-image" alt="项目一效果图">
       </div>
-      <div class="card bg-white p-6">
+      <div class="card bg-white p-6 cursor-pointer" onclick="showImage('project2')">
         <h3 class="text-xl font-semibold">项目二</h3>
-        <p class="text-gray-600 mt-2">金融大模型微调</p>
+        <p class="text-gray-600 mt-2">金融大模型微调应用，帮助企业进行决策支持。</p>
         <a href="#" class="text-blue-500 mt-3 inline-block">查看项目 →</a>
+        <img src="imgs/project2.jpg" id="project2-image" class="project-image" alt="项目二效果图">
       </div>
     </div>
   </section>
@@ -74,14 +96,14 @@
     <div class="space-y-4">
       <div class="card bg-white p-6">
         <h3 class="text-xl font-semibold">LLM的学习</h3>
-        <p class="text-gray-500 text-sm">2025-08-01</p>
-        <p class="text-gray-600 mt-2">本文介绍了从理论到实践学习LLM的过程</p>
+        <p class="text-gray-500 text-sm">2025-02-01</p>
+        <p class="text-gray-600 mt-2">本文介绍了从零开始学习LLM的过程，涵盖了47个步骤。</p>
         <a href="#" class="text-blue-500 mt-3 inline-block">阅读全文 →</a>
       </div>
       <div class="card bg-white p-6">
         <h3 class="text-xl font-semibold">MLLM</h3>
         <p class="text-gray-500 text-sm">2025-07-15</p>
-        <p class="text-gray-600 mt-2">计划学习更多MLLM原理和技术，并在开源社区做更多贡献...</p>
+        <p class="text-gray-600 mt-2">计划学习多模态MLLM，并在开源社区做贡献...</p>
         <a href="#" class="text-blue-500 mt-3 inline-block">阅读全文 →</a>
       </div>
     </div>
